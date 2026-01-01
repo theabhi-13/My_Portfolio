@@ -50,7 +50,7 @@ const Footer = () => {
             transition={{ duration: 0.6 }}
           >
             <a href="#home" className="text-2xl font-bold gradient-text">
-              Abhishek<span className="text-foreground">.</span>
+              Abhishek Kumar Singh<span className="text-foreground"></span>
             </a>
             <p className="text-sm text-muted-foreground mt-1">
               Data Analyst & Developer

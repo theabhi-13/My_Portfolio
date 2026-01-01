@@ -3,6 +3,7 @@ import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { toast } from "sonner";
+import emailjs from "@emailjs/browser";
 
 const contactInfo = [
   {
@@ -20,7 +21,7 @@ const contactInfo = [
   {
     icon: MapPin,
     label: "Location",
-    value: "Kochi, Kerala, India",
+    value: "India",
     href: "#",
   },
 ];
@@ -35,14 +36,31 @@ const ContactSection = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const form = useRef<HTMLFormElement>(null);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    toast.success("Message sent successfully! I'll get back to you soon.");
-    setFormData({ name: "", email: "", message: "" });
-    setIsSubmitting(false);
+
+    if (!form.current) return;
+
+    try {
+      await emailjs.sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        form.current,
+        {
+          publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+        }
+      );
+      toast.success("Message sent successfully! I'll get back to you soon.");
+      setFormData({ name: "", email: "", message: "" });
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to send message. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -119,7 +137,7 @@ const ContactSection = () => {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <form onSubmit={handleSubmit} className="glass-card p-8 space-y-6">
+            <form ref={form} onSubmit={handleSubmit} className="glass-card p-8 space-y-6">
               <div>
                 <label
                   htmlFor="name"
@@ -130,6 +148,7 @@ const ContactSection = () => {
                 <input
                   type="text"
                   id="name"
+                  name="user_name"
                   value={formData.name}
                   onChange={(e) =>
                     setFormData({ ...formData, name: e.target.value })
@@ -150,6 +169,7 @@ const ContactSection = () => {
                 <input
                   type="email"
                   id="email"
+                  name="user_email"
                   value={formData.email}
                   onChange={(e) =>
                     setFormData({ ...formData, email: e.target.value })
@@ -169,6 +189,7 @@ const ContactSection = () => {
                 </label>
                 <textarea
                   id="message"
+                  name="message"
                   value={formData.message}
                   onChange={(e) =>
                     setFormData({ ...formData, message: e.target.value })
