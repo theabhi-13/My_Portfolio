@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import profileImage from "@/assets/profile.jpeg";
 
-const roles = ["Software Developer", "ML Enthusiast","Data Analyst"];
+const roles = ["Software Developer", "ML Enthusiast", "Data Analyst"];
 
 const HeroSection = () => {
   const [currentRole, setCurrentRole] = useState(0);
@@ -144,8 +144,7 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed"
         >
-          Transforming raw data into actionable insights and building scalable
-          applications. Based in{" "}
+          Software developer building scalable, reliable applications. Based in{" "}
           <span className="text-primary">India</span>.
         </motion.p>
 

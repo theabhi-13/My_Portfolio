@@ -53,13 +53,11 @@ const AboutSection = () => {
             className="space-y-6"
           >
             <p className="text-lg text-muted-foreground leading-relaxed">
-              I'm a{" "}
+              I'm{" "}
               <span className="text-foreground font-medium">
-                data enthusiast
+                Abhishek Kumar Singh
               </span>{" "}
-              with a passion for uncovering stories hidden in numbers. Currently
-              pursuing my MCA at CUSAT, I blend analytical thinking with
-              software development to create impactful solutions.
+              a software developer specializing in backend systems, RESTful APIs, and scalable web applications. I have hands-on experience building production-ready applications using Node.js, NestJS, PostgreSQL, MongoDB, and TypeScript, with a strong focus on clean architecture, performance, and reliability.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
               My journey spans from{" "}

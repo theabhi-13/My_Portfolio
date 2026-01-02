@@ -44,11 +44,10 @@ const Navigation = () => {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
-            ? "py-4 bg-background/80 backdrop-blur-xl border-b border-border/50"
-            : "py-6 bg-transparent"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+          ? "py-4 bg-background/80 backdrop-blur-xl border-b border-border/50"
+          : "py-6 bg-transparent"
+          }`}
       >
         <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
           {/* Logo */}
@@ -66,11 +65,10 @@ const Navigation = () => {
               <motion.a
                 key={link.name}
                 href={link.href}
-                className={`relative px-4 py-2 text-sm font-medium transition-colors ${
-                  activeSection === link.href.substring(1)
-                    ? "text-primary"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
+                className={`relative px-4 py-2 text-sm font-medium transition-colors ${activeSection === link.href.substring(1)
+                  ? "text-primary"
+                  : "text-muted-foreground hover:text-foreground"
+                  }`}
                 whileHover={{ scale: 1.05 }}
               >
                 {link.name}
@@ -124,11 +122,10 @@ const Navigation = () => {
                     key={link.name}
                     href={link.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className={`block px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
-                      activeSection === link.href.substring(1)
-                        ? "bg-primary/10 text-primary"
-                        : "text-muted-foreground hover:bg-muted hover:text-foreground"
-                    }`}
+                    className={`block px-4 py-3 rounded-xl text-sm font-medium transition-colors ${activeSection === link.href.substring(1)
+                      ? "bg-primary/10 text-primary"
+                      : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                      }`}
                   >
                     {link.name}
                   </a>
